@@ -375,7 +375,7 @@ The limit q₀ → 1/2 = |B₁| would recover the Diaconis–Fulman spectral gap
 4. J. M. Holte, *Carries, combinatorics, and an amazing matrix*, Amer. Math. Monthly **104** (1997), 138–149.
 5. D. E. Knuth, *The Art of Computer Programming, Volume 2: Seminumerical Algorithms*, 3rd ed., Addison-Wesley, 1997.
 6. L. F. Richardson and J. A. Gaunt, *The deferred approach to the limit*, Phil. Trans. R. Soc. A **226** (1927), 299–361.
-7. [P1] Companion paper: *π from Pure Arithmetic: A Spectral Phase Transition in the Binary Carry Bridge*.
-8. [G] Companion paper: *The angular uniqueness of base 2 in positional multiplication*.
+7. [P1] Companion paper: *π from Pure Arithmetic: A Spectral Phase Transition in the Binary Carry Bridge*. doi:10.5281/zenodo.18895611
+8. [G] Companion paper: *The angular uniqueness of base 2 in positional multiplication*. doi:10.5281/zenodo.18895601
 9. T. Apostol, *Introduction to Analytic Number Theory*, Springer, 1976.
-10. [E] Companion paper: *The Trace Anomaly of Binary Multiplication*. (Identifies conditionally the mechanism for $R \to -\pi$ via resolvent universality, assuming the LMH.)
+10. [E] Companion paper: *The Trace Anomaly of Binary Multiplication*. (Identifies conditionally the mechanism for $R \to -\pi$ via resolvent universality, assuming the LMH.). doi:10.5281/zenodo.18895604
