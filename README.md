@@ -6,7 +6,7 @@
 
 ## Main Result
 
-Computational companion paper providing enumeration data and structural decomposition backing Paper P1. Establishes that the Markov model fails to predict the sector ratio at $K \geq 5$, and traces the failure to bit-sharing correlations at the D-parity boundary. The structural decomposition $R = R^{\text{sch}} + R^{\text{cas}}$ isolates the cascade contribution whose limit is conjectured to be $-\pi$ (Conjecture 1 of [P1]).
+Computational companion paper providing enumeration data and structural decomposition backing Paper P1. Establishes that the Markov model fails to predict the sector ratio at $K \geq 7$, and traces the failure to bit-sharing correlations at the D-parity boundary. The cascade valuation $R^{\text{cas}}(K)$ isolates the stopping-time contribution whose limit is conjectured to be $-\pi$ (Conjecture 1 of [P1]).
 
 ## Status
 
@@ -18,6 +18,7 @@ Computational companion paper. Numerical claims rely on E44/E45 exact enumeratio
 paper/sector_ratio.md                The paper
 experiments/
   P2_01_verify_claims.py             Standalone verification of key claims (§3, §7, §8, §9)
+  P2_02_sector_ratio_types.py        Per-sector mean ratio and weight separation (§10, OP 7)
   README.md                          Experiment index and reproduction pipeline
 ```
 
@@ -43,6 +44,7 @@ Full reproduction of R(K) for K = 4–21 requires the C enumerator in `carry-ari
 | [E] | The Trace Anomaly of Binary Multiplication (**experiments**) | [`carry-arithmetic-E-trace-anomaly`](https://github.com/stefanoalimonti/carry-arithmetic-E-trace-anomaly) |
 | [P1] | Pi from Pure Arithmetic | [`carry-arithmetic-P1-pi-spectral`](https://github.com/stefanoalimonti/carry-arithmetic-P1-pi-spectral) |
 | [G] | The Angular Uniqueness of Base 2 | [`carry-arithmetic-G-angular-uniqueness`](https://github.com/stefanoalimonti/carry-arithmetic-G-angular-uniqueness) |
+| [L] | The Carry–Dirichlet Bridge | [`carry-arithmetic-L-dirichlet-bridge`](https://github.com/stefanoalimonti/carry-arithmetic-L-dirichlet-bridge) |
 
 ### Citation
 

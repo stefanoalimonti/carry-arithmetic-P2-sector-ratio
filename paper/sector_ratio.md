@@ -56,7 +56,7 @@ Let X = Σ_{i=0}^{K-1} x_i 2^i and Y = Σ_{i=0}^{K-1} y_i 2^i with x_{K−1} = y
 
 **Definition 1b (Cascade carry weight).** Let M(X,Y) = max{j : c_j ≥ 1} be the position of the topmost nonzero carry (the *cascade stopping depth*). The *cascade weight* is w^{cas}(X,Y) = c_{M−1} − 1 ∈ {−1, 0, +1}, the carry one step below the stopping point. For pairs with M = 0 we set w^{cas} = 0.
 
-**Remark (Two valuations).** The schoolbook weight uses a fixed observation point (position D − 2), while the cascade weight uses a random stopping time (position M − 1). The two coincide when M = D − 1 (the carry chain extends to the top) and differ otherwise. Approximately 55% of sector-(0,0) pairs have M = D − 1; for sector (1,0), the top-carry constraint (Proposition 6) forces M ≤ D − 2 for all pairs. The distinction is analysed fully in [P1, §10].
+**Remark (Two valuations).** The schoolbook weight uses a fixed observation point (position D − 2), while the cascade weight uses a random stopping time (position M − 1). The two coincide when M = D − 2 (the carry chain extends to the penultimate position) and differ otherwise. Approximately 55% of sector-(0,0) pairs have M = D − 2; for sector (1,0), the top-carry constraint (Proposition 6) forces M ≤ D − 3 for all pairs. The distinction is analysed fully in [P1, §10].
 
 **Definition 2 (Sector partition function).** For a, c ∈ {0, 1} and valuation ∗ ∈ {sb, cas}:
 
@@ -78,7 +78,7 @@ The Diaconis–Fulman Markov chain [1, 2, 4] models the carry sequence (c_0, c_1
 
 **Proposition 1** (computational). The Markov model predicts R_Markov(K) > 0 for all K, while exact enumeration gives R(K) < 0 for K ≥ 7.
 
-*Evidence.* Verified by exact enumeration for K = 5, …, 21 and independently confirmed at K = 20, 21 by the C-language enumerator (E44). A formal proof would require showing that the Markov per-sector weights have opposite sign to the exact per-sector weights; the mechanism (J = 1 exclusion, Proposition 2) provides the structural explanation.
+*Evidence.* Verified by exact enumeration for K = 5, …, 21 and independently confirmed at K = 20, 21 by the C-language enumerator of [E]. A formal proof would require showing that the Markov per-sector weights have opposite sign to the exact per-sector weights; the mechanism (J = 1 exclusion, Proposition 2) provides the structural explanation.
 
 This is not a quantitative error — the Markov model predicts the *wrong direction* of the sector effect. The sign flip is the most dramatic signature of non-Markovian behavior in the carry chain.
 
@@ -101,7 +101,7 @@ The Markov model's dominant contribution to σ₁₀ comes from the "J = 1 pathw
 
 **Proposition 2 (J = 1 exclusion, computationally verified).** In the sector (a, c) = (1, 0), the leading-order Markov contribution at position J = 1 (one step from the boundary) requires digit configurations that violate the D-odd constraint. Removing this contribution flips the sign of σ₁₀.
 
-*Evidence.* Verified by direct comparison of the Markov and exact computations for K = 5, …, 13 (experiment E06). The formal case analysis on digit configurations at positions K−2 and K−1 is outlined but not fully proved; see Open Problem 3.
+*Evidence.* Verified by direct comparison of the Markov and exact computations for K = 5, …, 13 ([E, experiment E06]). The formal case analysis on digit configurations at positions K−2 and K−1 is outlined but not fully proved; see Open Problem 3.
 
 ---
 
@@ -170,7 +170,7 @@ Using the leading-order Fejér approximation $\rho(d) \approx (K-d)/(3K)$ (Theor
 
 **Proposition 3 (Non-uniform diagonal coupling; numerical).** The diagonal elements V_{nn} are not proportional to sin²(nπ/(2L)) for all n. The effective shift A_eff(n) = V_{nn}/sin²(nπ/(2L)) varies from ~400 (low modes) to ~0.2 (high modes) at K = 15.
 
-Verified numerically in experiment E10; no closed-form proof is given.
+Verified numerically in [E, experiment E10]; no closed-form proof is given.
 
 ### 6.2 Universality argument
 
@@ -234,7 +234,7 @@ $$R^{cas}(K) = R^{cas}(\infty) + c_1 \rho^K + c_2 \rho^{2K} + \cdots, \qquad \rh
 
 The Neville–Aitken table with step-size $h = \rho^K$ eliminates successive error terms.
 
-*Note.* A polynomial ansatz in $1/K^2$ was initially considered but diverges under Neville extrapolation. The exponential form reflects the true asymptotic rate $O(K^2 \cdot 2^{-K})$ [P1, §9.3].
+*Note.* The exponential form is preferred over a polynomial ansatz in $1/K^2$, as the latter diverges under Neville extrapolation. The exponential form reflects the true asymptotic rate $O(K^2 \cdot 2^{-K})$ [P1, §9.3].
 
 | K | R(K) | ε(K) = \|R(K) + π\| | Sig. digits |
 |---|------|------|-------------|
@@ -249,6 +249,12 @@ The Neville–Aitken table with step-size $h = \rho^K$ eliminates successive err
 
 **Proposition 5 (Richardson extrapolation; numerical).** Applying Neville–Aitken acceleration [6] with the exponential ansatz of Proposition 4 to the subsequence R(7), R(9), …, R(21) yields R_extrap = −3.1419… to ≈ 4.0 significant digits (4.4 when restricted to exact values). The extrapolation is stable under cross-validation: removing any single K ∈ {7, …, 17} changes the estimate by less than 10⁻⁴. This is a numerical observation, not a convergence proof.
 
+*Remark (three distinct sector ratios).* The notation R (or R(K)) always denotes the **total-sum ratio** $R(K) = S_{10}(K)/S_{00}(K)$, where $S_{ab}(K) = \sum_{(x,y) \in \text{sector } ab} \text{val}(x,y)$ is the total cascade valuation over the sector. This is the quantity conjectured to converge to $-\pi$. Two other sector-ratio objects appear in related work and should not be confused with R:
+- The **per-sector mean ratio** $\langle\text{val}\rangle_{10}/\langle\text{val}\rangle_{00} = (S_{10}/N_{10})/(S_{00}/N_{00}) = R \cdot (N_{00}/N_{10})$. By Theorem 7, $N_{00}/N_{10} \to 1/\omega$ where $\omega = N_{10}/N_{00} \to 0.31993$, so this ratio $\to -\pi/\omega \approx -9.82$, carrying no additional information beyond R.
+- The **$\chi_4$-weighted channel ratio** $\mu_{00}^{\chi_4}(s)/\mu_{10}^{\chi_4}(s)$, defined for the complex-$s$ mixed channel of [L] (§5, §7.4). At $s = 1/2 + it$ on the critical line this quantity equals approximately $-0.13$, is $s$-dependent, and is a wholly different object from R.
+
+The relation between R and the per-sector mean is $R = \omega \cdot (\langle\text{val}\rangle_{10}/\langle\text{val}\rangle_{00})$, where $\omega = N_{10}/N_{00} \to 0.31993$ by Theorem 7.
+
 ---
 
 ## 8. Physical Analogies
@@ -259,7 +265,7 @@ These analogies are structural, not rigorous equivalences. The "bare" Fejér cou
 
 ---
 
-## 9. Structural Decomposition of R (E16–E19)
+## 9. Structural Decomposition of R
 
 ### 9.1 The top-carry constraint
 
@@ -301,7 +307,7 @@ Since R = (⟨val⟩₁₀/⟨val⟩₀₀) × (N₁₀/N₀₀) and N₁₀/N�
 
 **The entire factor π in the conjectured limit R → −π enters through the carry weight ratio**, not through the pair counts. This reduces the proof of Conjecture 1 to proving this single carry weight identity.
 
-### 9.4 The boundary layer mechanism (E18)
+### 9.4 The boundary layer mechanism
 
 The total variation distance TV(j) = (1/2) Σ_v |P(c_j|10) − P(c_j|00)| reveals a boundary layer with two peaks:
 - j = K−2 (sector bit): TV ≈ 0.16, from the direct convolution perturbation.
@@ -316,7 +322,7 @@ The c_{M−1} distribution shifts dramatically:
 
 This 6–7× shift in the val = +1 proportion drives σ₁₀ > 0 while σ₀₀ < 0.
 
-### 9.5 The bit-sharing mechanism (E31)
+### 9.5 The bit-sharing mechanism
 
 The Markov model treats convolutions at successive depths as independent given the carry state, predicting a survival probability Q_Markov(d) that decays super-exponentially: Q ∼ (3/4)^d. Exact enumeration shows geometric decay Q_emp ≈ 0.55, an order-of-magnitude discrepancy at moderate depths. The mechanism is *bit-sharing*: the digit x_{K−3} (for instance) contributes to convolutions at depths d = 1 and d = 2, inducing correlations that the Markov model ignores.
 
@@ -357,13 +363,13 @@ The limit q₀ → 1/2 = |B₁| would recover the Diaconis–Fulman spectral gap
 
 3. **Proposition 2 (J = 1 exclusion): formal proof.** Verified computationally for K = 5, …, 13. A formal case analysis on digit configurations near the boundary would promote this to a theorem.
 
-4. **K ≥ 22 data.** Each additional K approximately quadruples the computation time. Data through K = 21 are available; K = 22 would require approximately 16 hours. Additional data points would sharpen the Richardson extrapolation and allow independent convergence analysis of the even-K and odd-K subsequences.
+4. **K ≥ 22 data.** Each additional K approximately quadruples the computation time. Data through K = 21 are available; K = 22 would require approximately 16 hours. *Computational note:* the single Richardson step $2R(21) - R(20) = -3.14194$ (experiment P2\_02) already establishes 3.5 significant digits; the full Neville–Aitken table gives 4.0 digits. The K = 999 carry ensemble provides independent confirmation via topological stability of the L-zero tracking positions ([P1, §9.5]; [L, §5.5]). The computational problem is thus resolved to 4+ digits without K ≥ 22 direct enumeration; the analytical proof remains open.
 
 5. **Base dependence.** In base b ≥ 3, the sector ratio appears rational (e.g., R₅ = 5/4 for base 5). The angular uniqueness of base 2 is proved in [G]: the D-parity boundary is a straight line in angular coordinates iff b = 2, which explains why π enters only for binary multiplication. A systematic exact enumeration of R(K; b) for bases 3, 5, 7 would test whether R_b is rational for all b ≥ 3.
 
 6. **Boundary layer scaling.** Section 9.4 reports the TV(j) profile and c_{M−1} distributions at a single K value (K = 12). Computing these at K = 14, 16, 18 would reveal whether the key percentages (30% vs 5.5% for val = +1) converge to limiting values and at what rate.
 
-7. **Separate weight sequences.** The current pipeline computes only the ratio R = σ₁₀/σ₀₀. Computing ⟨val⟩₁₀ and ⟨val⟩₀₀ separately would allow independent Richardson extrapolation and closed-form identification of each weight, which would provide a more transparent path to the identity ⟨val⟩₁₀/⟨val⟩₀₀ = −9.8197….
+7. **Separate weight sequences.** The current pipeline computes only the ratio R = σ₁₀/σ₀₀. Computing ⟨val⟩₁₀ and ⟨val⟩₀₀ separately would allow independent Richardson extrapolation and closed-form identification of each weight, which would provide a more transparent path to the identity ⟨val⟩₁₀/⟨val⟩₀₀ = −9.8197…. The sector sums $S_{10}(K)$ and $S_{00}(K)$ are available separately for K = 19, 20, 21 ([E, experiment E162] exact enumeration); their per-sector mean ratio converges to $-9.82$ at K = 21, consistent with $-\pi/\omega \approx -9.8197$ (remark after Proposition 5; experiment P2\_02). The s-dependent $\chi_4$-weighted generalisation $\mu_{00}^{\chi_4}(s)/\mu_{10}^{\chi_4}(s)$ is developed in [L, §7.4].
 
 ---
 
@@ -379,3 +385,4 @@ The limit q₀ → 1/2 = |B₁| would recover the Diaconis–Fulman spectral gap
 8. [G] Companion paper: *The angular uniqueness of base 2 in positional multiplication*. doi:10.5281/zenodo.18895601
 9. T. Apostol, *Introduction to Analytic Number Theory*, Springer, 1976.
 10. [E] Companion paper: *The Trace Anomaly of Binary Multiplication*. (Identifies conditionally the mechanism for $R \to -\pi$ via resolvent universality, assuming the LMH.). doi:10.5281/zenodo.18895604
+11. [L] Companion paper: *The Carry–Dirichlet Bridge: Stopping-Time Series and L²(s,χ₄)*. doi:10.5281/zenodo.18895609

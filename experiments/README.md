@@ -4,7 +4,7 @@
 
 | Script | Description | Claims verified |
 |--------|-------------|-----------------|
-| `P2_01_verify_claims.py` | Standalone verification of P2's key numerical claims | §3, §7, §7.1, §7.3, §8.2, §9.1 |
+| `P2_01_verify_claims.py` | Standalone verification of P2's key numerical claims | §2, §7, §7.1, §7.3, §9.1, §9.2 |
 
 Run:
 
@@ -16,11 +16,11 @@ This script uses embedded data from E44/E45 exact enumeration (K = 19–21 integ
 counts) plus the published R(K) table (K = 4–18), and verifies:
 
 1. **R(K) table** (§7) — consistent with E44/E45
-2. **Schoolbook limit** R₀ = (1/2 − 2·ln(4/3)) / (1 + ln(3/8)) = −3.9312…  (§3)
-3. **Gap ratios** g(K)/g(K−1) → 1/2  (§9.1)
+2. **Schoolbook limit** R₀ = (1/2 − 2·ln(4/3)) / (1 + ln(3/8)) = −3.9312…  (§2)
+3. **Gap ratios** g(K)/g(K−1) → 1/2  (§7.3, Proposition 4)
 4. **Richardson extrapolation** → ≈ 4 sig. digits  (§7.3, Proposition 5)
-5. **α(K) → 1/6**  (§7.1)
-6. **N₁₀/N₀₀ → closed form**  (§8.2)
+5. **α(K) convergence**  (§7.2)
+6. **N₁₀/N₀₀ → closed form**  (§9.2, Theorem 7)
 
 ## Full Reproduction Pipeline
 
